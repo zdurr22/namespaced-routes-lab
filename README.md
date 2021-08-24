@@ -35,6 +35,12 @@ already pass at the beginning still pass when you're done!
 2. Create a `PreferencesController`, routes, and views. Do this under an `Admin`
    module to separate it from the standard user functionality.
 3. Update the `songs#new` and `artists#new` actions to check that creating new
-   songs or artists is enabled, and redirect to `/songs` and `/artists`,
-   respectively, if that preference is disabled.
+   songs or artists is enabled using the `Preference` class, and redirect to
+   `/songs` and `/artists`, respectively, if that preference is disabled. If the
+   preference is enabled, show the `new` view instead.
+   - **Hint**: Remember, there will only be one instance of the `Preference`
+     class saved to the database. When determining if creating songs or artists
+     is enabled, you'll need to find the **first** instance of the `Preference`
+     class, and use that instance along with some conditional logic to determine
+     whether to redirect or display the view.
 4. Make sure tests pass.
