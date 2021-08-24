@@ -29,7 +29,9 @@ already pass at the beginning still pass when you're done!
      artists to the system. **Note:** There will only be 1 instance of
      `Preference`, not a preference associated with each artist/song. After
      creating the model, run `rake preferences:load` so that your code will work
-     in the browser.
+     in the browser. This will run the Rake task defined in the
+     `lib/tasks/preferences.rake` file and save one `Preference` instance to the
+     database.
 2. Create a `PreferencesController`, routes, and views. Do this under an `Admin`
    module to separate it from the standard user functionality.
 3. Update the `songs#new` and `artists#new` actions to check that creating new
