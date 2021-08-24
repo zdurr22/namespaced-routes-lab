@@ -21,15 +21,20 @@ The base application has been provided with tests. Make sure to run
 already has tests, part of the job is to make sure the tests that
 already pass at the beginning still pass when you're done!
 
-1. Create a `Preference` model that will store preferences for the app. It will need
-   to have fields for:
-   * Allowing creation of new songs. Used to control the ability to add new songs to the system.
-   * Allowing creation of new artists. Used to control the ability to add new artists to the system.
-   **Note:** There will only be 1 instance of `Preference`, not a preference associated with each artist/song.
-2. Create a `PreferencesController`, routes, and views. Do this under an `Admin` module to separate it from the standard user functionality.
-3. Update the `songs#new` and `artists#new` actions to check that creating new songs or artists is enabled, and redirect to `/songs` and `/artists`, respectively, if that preference is disabled.
+1. Create a migration and a model for a `Preference` class that will store
+   preferences for the app. In the migration, define `boolean` fields for:
+   - `allow_create_songs`: Allows for creation of new songs. Used to control
+     the ability to add new songs to the system.
+   - `allow_create_artists`: Allows for creation of new artists. Used to control
+     the ability to add new artists to the system.
+   - **Note:** There will only be 1 instance of `Preference`, not a preference
+     associated with each artist/song. After creating the model, run
+     `rake preferences:load` so that your code will work in the browser. This
+     will run the Rake task defined in the `lib/tasks/preferences.rake` file and
+     save one `Preference` instance to the database.
+2. Create a `PreferencesController`, routes, and views. Do this under an `Admin`
+   module to separate it from the standard user functionality.
+3. Update the `songs#new` and `artists#new` actions to check that creating new
+   songs or artists is enabled, and redirect to `/songs` and `/artists`,
+   respectively, if that preference is disabled.
 4. Make sure tests pass.
-
-![Happy Gilmore](http://i.giphy.com/h2Q9ZYee54UOk.gif)
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/namespaced-routes-lab' title='Namespaced Routes Lab'>Namespaced Routes Lab</a> on Learn.co and start learning to code for free.</p>
